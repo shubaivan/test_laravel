@@ -1,0 +1,35 @@
+version: '3.7'
+
+services:
+  nginx-laratest:
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+    restart: on-failure
+    volumes:
+      - "../:/var/www"
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - php-laratest
+    networks:
+      - nginx
+      - php
+
+  php-laratest:
+    build:
+      context: .
+      dockerfile: ./php/Dockerfile
+    restart: on-failure
+    volumes:
+      - "../:/var/www"
+      - "./php/php.ini:/usr/local/etc/php/conf.d/custom.ini"
+      - "./data/php:/var/laratest"
+    networks:
+      - php
+
+networks:
+  php:
+  nginx:
+
