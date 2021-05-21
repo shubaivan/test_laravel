@@ -11,7 +11,8 @@ RUN set -eux; \
     docker-php-ext-configure gd --with-freetype --with-jpeg; \
     docker-php-ext-install intl pgsql pdo_pgsql zip gd sockets; \
     pecl install apcu; \
-    pecl install xdebug;
+    pecl install xdebug; \
+    docker-php-ext-enable apcu xdebug;
 
 RUN mkdir -p /var/www
 #COPY ${API_PATH} /var/www

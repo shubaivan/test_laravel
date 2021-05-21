@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Contracts\Http\Kernel;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 define('LARAVEL_START', microtime(true));
 
@@ -47,9 +49,12 @@ require __DIR__.'/../vendor/autoload.php';
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
 $kernel = $app->make(Kernel::class);
-
+/** @var Response|JsonResponse $response */
 $response = tap($kernel->handle(
     $request = Request::capture()
-))->send();
-
+));
+$response->withHeaders([
+    'X-Execution-Time' => round(microtime(true) - LARAVEL_START, 3)
+]);
+$response->send();
 $kernel->terminate($request, $response);

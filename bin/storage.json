@@ -1,0 +1,41 @@
+{
+    "fantasy": [
+        {
+            "name": "The Hitchhiker's Guide To The Galaxy",
+            "author": "Douglas Adams"
+        },{
+            "name": "Fahrenheit 451",
+            "author": "Ray Bradbury"
+        },{
+            "name": "Animal Farm",
+            "author": "George Orwell"
+        },{
+            "name": "I, Robot",
+            "author": "Isaac Asimov"
+        }
+    ],
+    "autobiography": [
+        {
+            "name": "A Promised Land",
+            "author": "Barack Obama"
+        },{
+            "name": "I, Asimov: A Memoir",
+            "author": "Isaac Asimovr"
+        },{
+            "name": "My Early Life",
+            "author": "Winston Churchill"
+        }
+    ],
+    "romance": [
+        {
+            "name": "It Ends With Us",
+            "author": "Colleen Hoover"
+        },{
+            "name": "Morning Glory",
+            "author": "Lavyrle Spencer"
+        },{
+            "name": "Lord of Scoundrels",
+            "author": "Loretta Chase"
+        }
+    ]
+}
