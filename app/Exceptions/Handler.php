@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Throwable;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -68,6 +69,15 @@ class Handler extends ExceptionHandler
             return new JsonResponse(
                 $this->convertExceptionToArray($e),
                 $this->isHttpException($e) ? $e->getStatusCode() : 500,
+                $this->isHttpException($e) ? $e->getHeaders() : [],
+                JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES
+            );
+        }
+
+        if ($e instanceof ValidationException) {
+            return new JsonResponse(
+                $e->validator->errors()->getMessages(),
+                $this->isHttpException($e) ? $e->getStatusCode() : 400,
                 $this->isHttpException($e) ? $e->getHeaders() : [],
                 JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES
             );
