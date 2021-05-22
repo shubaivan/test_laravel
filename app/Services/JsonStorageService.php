@@ -39,9 +39,9 @@ class JsonStorageService
     {
         $this->readDB();
         $storeMatchBooks = [];
-        $matches = array_filter($this->dbData, function($categoryBooks, $categoryName) use ($bookName, &$storeMatchBooks) {
+        $matches = array_filter($this->dbData, function ($categoryBooks, $categoryName) use ($bookName, &$storeMatchBooks) {
 
-            $matches = array_filter($categoryBooks, function($book) use ($bookName) {
+            $matches = array_filter($categoryBooks, function ($book) use ($bookName) {
                 return preg_grep("/$bookName/iu", $book);
             });
             array_map(function ($book) use ($categoryName, &$storeMatchBooks) {
@@ -52,6 +52,10 @@ class JsonStorageService
 
 
         return $storeMatchBooks;
+    }
+
+    public function postBook()
+    {
 
     }
 
