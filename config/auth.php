@@ -81,8 +81,8 @@ return [
     ],
 
     'credentials' => [
-        'user1' => '111',
-        'user2' => '222',
+        env('ACCESS_USER_ONE_USERNAME', 'user1') => env('ACCESS_USER_ONE_PASSWORD', '111'),
+        env('ACCESS_USER_TWO_USERNAME', 'user2') => env('ACCESS_USER_TWO_PASSWORD', '222'),
     ],
 
     /*

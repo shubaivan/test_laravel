@@ -1,3 +1,6 @@
+## Deploy
+- `cd docker && docker-compose build && docker-compose up -d`
+
 ## Json Storage
 for correct put data on file need to provide `chmod -R 0777 file_path.json `
 

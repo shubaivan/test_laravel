@@ -3,5 +3,5 @@
 use Illuminate\Support\Str;
 
 return [
-    'path' => '../bin/storage.json',
+    'path' => env('STORAGE_FILE_PATH', '../bin/storage.json'),
 ];
