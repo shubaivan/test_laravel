@@ -69,7 +69,7 @@ class JsonStorageService
         $genre = $data[BookController::GENRE];
         $genreSetOfBooks = $this->setIfNeededNewGenre($genre);
         $matches = array_filter($genreSetOfBooks, function ($book, $key) use (&$genreSetOfBooks, $author, $bookName, $genre) {
-            $preg_grep = preg_grep("/$bookName/iu", $book);
+            $preg_grep = preg_grep("/\b$bookName\b/iu", $book);
             if ($preg_grep) {
                 $genreSetOfBooks[$key][BookController::AUTHOR] = $author;
             }
