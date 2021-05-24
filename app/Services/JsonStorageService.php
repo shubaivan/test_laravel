@@ -115,7 +115,7 @@ class JsonStorageService
     private function checkGenre($genre)
     {
         $genres = array_keys($this->dbData);
-        return preg_grep("/$genre/iu", $genres);
+        return preg_grep("/\b$genre\b/iu", $genres);
     }
 
     private function ping()
