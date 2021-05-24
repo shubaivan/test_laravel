@@ -36,7 +36,7 @@ class JsonStorageService
      * @return array
      * @throws \Exception
      */
-    public function getBookByNameSlug($bookName)
+    public function getBookByPartialName($bookName)
     {
         $this->readDB();
         $storeMatchBooks = [];

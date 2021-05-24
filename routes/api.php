@@ -36,8 +36,8 @@ Route::group([
 Route::group([
     'prefix' => 'book'
 ], function () {
-    Route::get('/{slug}', [BookController::class, 'getBySlug'])->middleware('auth.jwt');
-    Route::post('', [BookController::class, 'postBook'])->middleware('auth.jwt');
+    Route::get('/{slug}', [BookController::class, 'getBookByPartialNameAction'])->middleware('auth.jwt');
+    Route::post('', [BookController::class, 'postBookAction'])->middleware('auth.jwt');
 });
 
 

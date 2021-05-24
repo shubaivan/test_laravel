@@ -31,7 +31,7 @@ class BookController extends Controller
      * @return array
      * @throws \Exception
      */
-    public function getBySlug($bookName)
+    public function getBookByPartialNameAction($bookName)
     {
         $validator = Validator::make(
             [self::NAME => $bookName],
@@ -47,7 +47,7 @@ class BookController extends Controller
             return $messageBag->getMessages();
         }
 
-        return $this->jsonStorageService->getBookByNameSlug($bookName);
+        return $this->jsonStorageService->getBookByPartialName($bookName);
     }
 
     /**
@@ -55,7 +55,7 @@ class BookController extends Controller
      * @return array
      * @throws \Exception
      */
-    public function postBook(Request $request)
+    public function postBookAction(Request $request)
     {
         $request->validate([
             self::GENRE => 'required',
