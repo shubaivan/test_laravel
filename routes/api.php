@@ -27,17 +27,27 @@ Route::get('ping', [PingController::class, 'pingAction'])->middleware('check_hea
 Route::group([
     'prefix' => 'auth'
 ], function () {
-    Route::post('', [AuthController::class, 'login']);
-    Route::post('logout', [AuthController::class, 'logout'])->middleware('auth.jwt');
-    Route::post('refresh', [AuthController::class, 'refresh'])->middleware('auth.jwt');
-    Route::post('me', [AuthController::class, 'me'])->middleware('auth.jwt');
+    Route::post('', [AuthController::class, 'login'])->middleware('check_header');
+    Route::post('logout', [AuthController::class, 'logout'])
+        ->middleware('auth.jwt')
+        ->middleware('check_header');
+    Route::post('refresh', [AuthController::class, 'refresh'])
+        ->middleware('auth.jwt')
+        ->middleware('check_header');
+    Route::post('me', [AuthController::class, 'me'])
+        ->middleware('auth.jwt')
+        ->middleware('check_header');
 });
 
 Route::group([
     'prefix' => 'book'
 ], function () {
-    Route::get('/{slug}', [BookController::class, 'getBookByPartialNameAction'])->middleware('auth.jwt');
-    Route::post('', [BookController::class, 'postBookAction'])->middleware('auth.jwt');
+    Route::get('/{slug}', [BookController::class, 'getBookByPartialNameAction'])
+        ->middleware('auth.jwt')
+        ->middleware('check_header');
+    Route::post('', [BookController::class, 'postBookAction'])
+        ->middleware('auth.jwt')
+        ->middleware('check_header');
 });
 
 
