@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 
 class PingController extends Controller
 {
     public function pingAction()
     {
-        return ['pong'];
+        return new JsonResponse('ping');
     }
 }
