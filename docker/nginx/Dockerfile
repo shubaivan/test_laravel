@@ -1,5 +1,5 @@
 # Use Alpine Linux
-FROM alpine:latest
+FROM nginx:stable-alpine
 
 RUN apk add --update --no-cache nginx
 

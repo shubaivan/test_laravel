@@ -14,8 +14,8 @@ services:
     depends_on:
       - php-laratest
     networks:
-      - nginx
-      - php
+      - nginx-laratest-networks
+      - php-laratest-networks
 
   php-laratest:
     build:
@@ -27,9 +27,9 @@ services:
       - "./php/php.ini:/usr/local/etc/php/conf.d/custom.ini"
       - "./data/php:/var/laratest"
     networks:
-      - php
+      - php-laratest-networks
 
 networks:
-  php:
-  nginx:
+  php-laratest-networks:
+  nginx-laratest-networks:
 
